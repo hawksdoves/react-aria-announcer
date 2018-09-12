@@ -3,14 +3,14 @@ import React from 'react';
 const AnnounceMessageContext = React.createContext();
 
 const connectActionProvider = (Section) => {
-  function ActionMessaging({ addNewMessage, ariaMessages }) {
+  function ActionMessaging({ addNewMessage, ariaMessages, ...props }) {
     const addMessage = (action, custom) => {
       const message = ariaMessages[action](custom)
       return addNewMessage(message, Date.now())
     }
     return (
       <AnnounceMessageContext.Provider value={addMessage} > 
-        <Section />
+        <Section {...props} />
       </AnnounceMessageContext.Provider> 
     )
   }
@@ -18,17 +18,17 @@ const connectActionProvider = (Section) => {
 }
 
 const connectActionConsumer = (Component) => {
-  function AccessibleAction() {
+  function AccessibleAction(props) {
     return (
       <AnnounceMessageContext.Consumer>
             {((addNewMessageByAction) => {
-              return <Component addNewMessageByAction={addNewMessageByAction} />  
+              return <Component addNewMessageByAction={addNewMessageByAction} {...props} />  
             })}
       </AnnounceMessageContext.Consumer>
     )
   }
 
-  return AccessibleAction
+  return AccessibleAction;
 }
 
 export {
