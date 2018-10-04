@@ -45,9 +45,9 @@ export class HiddenMessages extends React.Component {
     return (
       <div className="AM-hidden" > 
         { this.state.messageA ?
-          <MessageA message={message} manners={manner} />
+          <MessageA message={message} manners={manners} />
         :
-          <MessageB message={message} manners={manner} />
+          <MessageB message={message} manners={manners} />
         } 
       </div>
     )
