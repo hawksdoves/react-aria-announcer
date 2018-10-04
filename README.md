@@ -160,3 +160,18 @@ function MyAccessibleAppSectionChild() {
 ```
 Your component will receive a prop `announce`.
 * `announce` - {function} - the first argument will be a key, as defined in your ariaMessages. Any additional arguments will correspond to the keys value and any parameters that you defined that function to take.
+
+# Contributing to React aria announcer
+
+Thank you for taking the time to contribute.
+
+The community is a safe place for people to collaborate.
+
+Please read the [CODE of CONDUCT](/CODE_OF_CONDUCT.md).
+
+---
+
+## All contributions are welcome 
+
+...from typos in documentation to coding new features. If you require any help or have any questions please do not hesitate to ask, we are friendly and aim to reply within 48hours.
+

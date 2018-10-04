@@ -1,5 +1,5 @@
 {
-  "name": "react-hoc-aria-live",
+  "name": "react-aria-announcer",
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
