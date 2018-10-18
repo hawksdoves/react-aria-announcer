@@ -6,7 +6,6 @@ const connectAriaAnnouncementProvider = (Section) => {
   function ConnectedAriaLiveAnnouncements({ announce, ariaMessages, ...props }) {
     function triggerAnnouncement(action, ...args) {
       const message = ariaMessages[action](...args)
-      console.log('message', message)
       return announce(message, Date.now())
     }
 
