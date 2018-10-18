@@ -4,7 +4,6 @@
   "description": "",
   "main": "build/src/index.js",
   "scripts": {
-    "start": "babel ./example -d build/example && cp ./example/index.html  build/example/index.html && open build/example/index.html",
     "build": "babel ./src -d build/src",
     "test:watch": "jest --watch",
     "test": "jest --coverage"
@@ -22,7 +21,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.4",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "jest": "^23.5.0"

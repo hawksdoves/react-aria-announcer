@@ -29,7 +29,7 @@ This component contains your aria-live div.
 
 ```javascript
 import React, { Component } from 'react';
-import { HiddenMessages } from 'react-hoc-aria-live';
+import { HiddenMessages } from 'react-aria-announcer';
 
 class MyAccessibleApp extends Component {
   state = {
@@ -60,7 +60,7 @@ This new component must have access to the setState method of the component that
 
 ```javascript
 import React, { Component } from 'react';
-import { HiddenMessages, connectAriaAnnouncementProvider } from 'react-hoc-aria-live';
+import { HiddenMessages, connectAriaAnnouncementProvider } from 'react-aria-announcer';
 import ariaMessages from './ariaMessages';
 
 function SearchableDashboard(props) {
@@ -127,7 +127,7 @@ A component that contains important visual changes, you would pass to this highe
 
 ```javascript
 import React from 'react';
-import { HiddenMessages, connectAriaAnnouncementConsumer } from 'react-hoc-aria-live';
+import { HiddenMessages, connectAriaAnnouncementConsumer } from 'react-aria-announcer';
 
 function FilterByBlockButton({ announce, type }) {
   function handleClick() {

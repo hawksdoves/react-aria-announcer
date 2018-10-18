@@ -1,5 +1,5 @@
 import React from 'react';
-import { connectAriaAnnouncementProvider } from '..src/connectAnnouncements';
+import { connectAriaAnnouncementProvider } from '../../src/connectAnnouncements';
 import Toolbar from './Toolbar';
 
 class Editor extends React.Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { HiddenMessages, connectAriaAnnouncementProvider } from '..src/connectAnnouncements';
+import { HiddenMessages, connectAriaAnnouncementProvider } from '../../src/connectAnnouncements';
 import ariaMessages from './aria-messages';
 import Editor from './Editor';
-import './App.css';
+// import './App.css';
 
 const AccessibleEditor = connectAriaAnnouncementProvider(EditorFake);
 

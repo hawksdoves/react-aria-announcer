@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const hiddenStyling = {
-  position: 'absolute',
-  left: '-10000px',
-  top: 'auto',
-  width: '1px',
-  height: '1px',
-  overflow: 'hidden',
+  // position: 'absolute',
+  // left: '-10000px',
+  // top: 'auto',
+  // width: '1px',
+  // height: '1px',
+  // overflow: 'hidden',
 };
 
 function MessageA({ message, manners }) {
   return (
-    <div aria-live={manners} style={hiddenStyling} className="messageA" >
+    <div aria-live={"assertive"} style={hiddenStyling} className="messageA" >
       {message}
     </div>
   )
@@ -20,7 +20,7 @@ function MessageA({ message, manners }) {
 
 function MessageB({ message, manners }) {
   return (
-    <div aria-live={manners} style={hiddenStyling} className="messageB" >
+    <div aria-live={"assertive"} style={hiddenStyling} className="messageB" >
       {message}
     </div>
   )

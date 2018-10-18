@@ -1,5 +1,5 @@
 import React from 'react';
-import { connectAriaAnnouncementConsumer } from '..src/connectAnnouncements';
+import { connectAriaAnnouncementConsumer } from '../../src/connectAnnouncements';
 
 function Toolbar({ addNewMessageByAction, addBlock }) {
   const handleOnClick = (type, action) => {
