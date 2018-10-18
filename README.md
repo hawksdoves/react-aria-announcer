@@ -2,7 +2,7 @@
 
 This lightweight package allows you to broadcast `aria-live` messages to screen-readers from anywhere within your React application.
 
-This package was created to try and solve the problems that I faced when building an online accessible editor. Historically, online editors are known for being not very accessible. Using this package I was able to broadcast announcements such as `"text block had been added"` or an `"image block had been deleted"`, which normally would not have been detected by a screenreader, but would have been visible on the screen.
+This package was created to try and solve the problems that I faced when building an online accessible editor. Historically, online editors are known for being not very accessible. Using this package I was able to broadcast announcements such as `"text block has been added"` or an `"image block has been deleted"`, which normally would not have been detected by a screenreader, but would have been visible on the screen.
 
 Unlike other packages that also solve this issue, `react-aria-announce` allows you to pre-define acceptable aria-live announcements. It also, takes advantage of HOCs, allowing for cleaner, more readable code.
 
