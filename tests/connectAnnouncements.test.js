@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import { connectAriaAnnouncementProvider, connectAriaAnnouncementConsumer, AnnounceMessageContext } from '../src/connectAnnouncements';
 
 const announce = jest.fn();
-    
+
 global.Date = {
   now: jest.fn(() => 'the time is now'),
 }
@@ -45,11 +45,11 @@ describe('connectAnnouncements', () => {
   describe('connectAriaAnnouncementsProvider', () => {
     it('wraps child with a context provider', () => {
       const AriaProviderComponent = connectAriaAnnouncementProvider(Component)
-      const ariaProviderComponent = shallow(<AriaProviderComponent />);
+      const ariaProviderComponent = shallow(<AriaProviderComponent ariaMessages={ariaMessages} announce={announce} />);
       expect(ariaProviderComponent.find(AnnounceMessageContext.Provider)).toHaveLength(1);
       expect(ariaProviderComponent.find(Component)).toHaveLength(1);
     });
-  
+
     it('the context value of the provider when called, calls announce', () => {
       const AriaProviderComponent = connectAriaAnnouncementProvider(Component)
       const ariaProviderComponent = shallow(<AriaProviderComponent ariaMessages={ariaMessages} announce={announce} />);
@@ -84,5 +84,5 @@ describe('connectAnnouncements', () => {
       expect(ariaMessages.customSing).toHaveBeenCalledWith('Hey', 'wrong');
     })
   })
-  
+
 });

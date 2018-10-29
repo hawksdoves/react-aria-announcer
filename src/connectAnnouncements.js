@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const AnnounceMessageContext = React.createContext();
 
@@ -10,11 +11,17 @@ const connectAriaAnnouncementProvider = (Section) => {
     }
 
     return (
-      <AnnounceMessageContext.Provider value={triggerAnnouncement} > 
+      <AnnounceMessageContext.Provider value={triggerAnnouncement} >
         <Section {...props} />
-      </AnnounceMessageContext.Provider> 
+      </AnnounceMessageContext.Provider>
     )
   }
+
+  ConnectedAriaLiveAnnouncements.propTypes = {
+    announce: PropTypes.func.isRequired,
+    ariaMessages: PropTypes.objectOf(PropTypes.func).isRequired,
+  };
+
   return ConnectedAriaLiveAnnouncements;
 }
 
@@ -23,7 +30,7 @@ const connectAriaAnnouncementConsumer = (Component) => {
     return (
       <AnnounceMessageContext.Consumer>
             {((triggerAnnouncement) => {
-              return <Component announce={triggerAnnouncement} {...props} />  
+              return <Component announce={triggerAnnouncement} {...props} />
             })}
       </AnnounceMessageContext.Consumer>
     )

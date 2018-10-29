@@ -44,5 +44,5 @@ describe('hiddenMessages', () => {
     expect(hiddenMessage.find('.messageB')).toHaveLength(1);
     expect(hiddenMessage.find('.messageB').text()).toEqual(message);
   });
-  
+
 });
