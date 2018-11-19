@@ -4,7 +4,7 @@ This lightweight package allows you to broadcast `aria-live` messages to screen-
 
 This package was created to try and solve the problems that I faced when building an online accessible editor. Historically, online editors are known for being not very accessible. Using this package I was able to broadcast announcements such as `"text block has been added"` or an `"image block has been deleted"`, which normally would not have been detected by a screenreader, but would have been visible on the screen.
 
-Unlike other packages that also solve this issue, `react-aria-announce` allows you to pre-define acceptable aria-live announcements. It also, takes advantage of HOCs, allowing for cleaner, more readable code.
+Unlike other packages that also solve this issue, `react-aria-announcer` allows you to pre-define acceptable aria-live announcements. It also, takes advantage of HOCs, allowing for cleaner, more readable code.
 
 Using ``react-aria-announcer`` you can broadcast these important announcements from any component in your application.
 
@@ -29,7 +29,7 @@ This component contains your aria-live div.
 
 ```javascript
 import React, { Component } from 'react';
-import { HiddenMessages } from 'react-hoc-aria-live';
+import { HiddenMessages } from 'react-aria-announcer';
 
 class MyAccessibleApp extends Component {
   state = {
@@ -51,7 +51,7 @@ class MyAccessibleApp extends Component {
 The props:
 * `message` - required (must receive the state value)
 * `timeStamp` - required (must receive the state value)
-* `manners` - optional values: 'assertive' or 'polite' (default: `'polite'`)
+* `manner` - optional values: 'assertive' or 'polite' (default: `'polite'`)
 
 #### connectAriaAnnouncementProvider
 This higher order component receives your app or a section of your app, where any number of it's ancestors might want to make an announcement. 
@@ -60,7 +60,7 @@ This new component must have access to the setState method of the component that
 
 ```javascript
 import React, { Component } from 'react';
-import { HiddenMessages, connectAriaAnnouncementProvider } from 'react-hoc-aria-live';
+import { HiddenMessages, connectAriaAnnouncementProvider } from 'react-aria-announcer';
 import ariaMessages from './ariaMessages';
 
 function SearchableDashboard(props) {
@@ -88,7 +88,7 @@ class MyAccessibleApp extends Component {
       <HiddenMessages 
         message={this.state.message} 
         timeStamp={this.state.timeStamp} 
-        manners='assertive'
+        manner='assertive'
       />
       <AccessibleSearchableDashboard
         announce={(message, timeStamp) => this.setState({ message, timeStamp })} 
@@ -127,7 +127,7 @@ A component that contains important visual changes, you would pass to this highe
 
 ```javascript
 import React from 'react';
-import { HiddenMessages, connectAriaAnnouncementConsumer } from 'react-hoc-aria-live';
+import { HiddenMessages, connectAriaAnnouncementConsumer } from 'react-aria-announcer';
 
 function FilterByBlockButton({ announce, type }) {
   function handleClick() {

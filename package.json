@@ -2,9 +2,9 @@
   "name": "react-aria-announcer",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "build/src/index.js",
   "scripts": {
-    "build": "babel ./src -d build",
+    "build": "babel ./src -d build/src",
     "test:watch": "jest --watch",
     "test": "jest --coverage"
   },
@@ -22,6 +22,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "jest": "^23.5.0"
