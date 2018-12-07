@@ -12,19 +12,21 @@ Using ``react-aria-announcer`` you can broadcast these important announcements f
 _______________
 
 ```
-npm install react-aria-announce
+npm install react-aria-announcer
 ```
 or
 ```
-yarn add react-aria-announce
+yarn add react-aria-announcer
 ```
 
 ## Usage
 _________
+------
 
 The library exports 3 components.
 
 #### HiddenMessages
+---
 This component contains your aria-live div. 
 
 ```javascript
@@ -54,9 +56,8 @@ The props:
 * `manner` - optional values: 'assertive' or 'polite' (default: `'polite'`)
 
 #### connectAriaAnnouncementProvider
+----
 This higher order component receives your app or a section of your app, where any number of it's ancestors might want to make an announcement. 
-
-This new component must have access to the setState method of the component that holds the state, message and timestamp.
 
 ```javascript
 import React, { Component } from 'react';
@@ -101,29 +102,32 @@ class MyAccessibleApp extends Component {
 }
 ```
 The new component must receive 2 props:
-* `announce` - (message, timeStamp) => this.setState({ message, timeStamp });
-* `ariaMessages` - {object}
+This new component must receive a function that calls the setState belonging to the component that holds the state; message and timestamp.
+* `announce` - {*function*} with two parameters, message and timeStamp and must call the setState method that belongs to the component that holds the state; message and timestamp. 
+i.e.  
+```javascript
+(message, timeStamp) => this.setState({ message, timeStamp })
+```
+* `ariaMessages` - {*object*}
   - keys: actions e.g. addBlock
-  - values: {functions} - can take as many arguments as needed, that `return a string`
-e.g.
+  - values: {*functions*} - can take as many arguments as needed, but must return a *string*
 
-##### ariaMessages:
+e.g.
 ```javascript
 const ariaMessages = {
   onToggleButton: () => 'Press shift enter to open toolbar, and navigate using tab ',
-  addBlock: type => `Press shift enter to add a new ${type} block`,
-  blockAdded: type => `New ${type} block added`,
-  blockDeleted: type => `${type} block deleted`,
+  addBlockGuide: type => `Press shift enter to add a new ${type} block`,
+  blockAction: (type, action) => `${type} block ${action}`,
   moveBlock: (type, position) => `${type} block has moved to ${position}`,
   entered: (type) => `You are now in the ${type} block`,
   filter: (type, resultNumber) => `Now viewing ${resultNumber} of ${type} blocks`
 };
 
-export default ariaMessages;
 ```
 
 ### connectAriaAnnouncementConsumer
-A component that contains important visual changes, you would pass to this higher order component.
+---
+This higher order component receives your component that might handle important visual changes and actions etc.
 
 ```javascript
 import React from 'react';
@@ -145,13 +149,15 @@ function FilterByBlockButton({ announce, type }) {
   )
 }
 
-const AccessibleSearchableDashboard = connectAriaAnnouncementConsumer(FilterByBlockButton)
+const AccessibleFilterByBlock = connectAriaAnnouncementConsumer(FilterByBlockButton)
 
 function MyAccessibleAppSectionChild() {
   return (
     <div>
       other components
-      <AccessibleSearchableDashboard />
+      <AccessibleFilterByBlock type='text' />
+      <AccessibleFilterByBlock type='headline' />
+      <AccessibleFilterByBlock type='image' />
       even more components
     </div>
   )
@@ -161,7 +167,7 @@ function MyAccessibleAppSectionChild() {
 Your component will receive a prop `announce`.
 * `announce` - {function} - the first argument will be a key, as defined in your ariaMessages. Any additional arguments will correspond to the keys value and any parameters that you defined that function to take.
 
-# Contributing to React aria announcer
+# Contributing to react-aria-announcer
 
 Thank you for taking the time to contribute.
 

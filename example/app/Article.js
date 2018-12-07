@@ -8,3 +8,5 @@ function Article({children}) {
     </article>
   )
 }
+
+export default Article;

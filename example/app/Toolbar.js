@@ -1,10 +1,10 @@
 import React from 'react';
 import { connectAriaAnnouncementConsumer } from '../../src/connectAnnouncements';
 
-function Toolbar({ addNewMessageByAction, addBlock }) {
+function Toolbar({ announce, addBlock }) {
   const handleOnClick = (type, action) => {
-    blockAction(type, action)
-    addBlock(type)
+    addBlock(type);
+    announce('blockAction', type, action);
   }
 
   return (
@@ -19,4 +19,4 @@ function Toolbar({ addNewMessageByAction, addBlock }) {
   )
 }
 
-const ConnectedMessageToolbar = connectActionConsumer(Toolbar);
+export default connectAriaAnnouncementConsumer(Toolbar);

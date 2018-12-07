@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { HiddenMessages, connectAriaAnnouncementProvider } from '../../src/connectAnnouncements';
+import { HiddenMessages, connectAriaAnnouncementProvider } from '../../src/index';
 import ariaMessages from './aria-messages';
 import Editor from './Editor';
-
-const AccessibleEditor = connectAriaAnnouncementProvider(EditorFake);
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
           <HiddenMessages {...this.state} />
-          <Editor addNewMessage={(message, timeStamp) => this.announceMessage(message, timeStamp)} ariaMessages={ariaMessages} />
+          <Editor announce={(message, timeStamp) => this.announceMessage(message, timeStamp)} ariaMessages={ariaMessages} />
       </div>
     );
   }
