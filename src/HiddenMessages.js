@@ -41,9 +41,9 @@ export class HiddenMessages extends React.Component {
   }
   
   render() {
-    const { message, timeStamp, manner } = this.props;
+    const { message, timeStamp, manner, className } = this.props;
     return (
-      <div className="AM-hidden" > 
+      <div className={`AM-hidden ${className}`} > 
         { this.state.messageA ?
           <MessageA message={message} manner={manner} />
         :
@@ -58,6 +58,7 @@ HiddenMessages.proptypes = {
   message: PropTypes.string,
   timeStamp: PropTypes.instanceOf(Date),
   manner: PropTypes.string,
+  className: PropTypes.string,
 }
 
 HiddenMessages.defaultProps = {
