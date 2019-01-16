@@ -8,6 +8,9 @@
     "test:watch": "jest --watch",
     "test": "jest --coverage"
   },
+  "files": [
+    "build"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
