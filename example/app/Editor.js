@@ -40,7 +40,12 @@ class Editor extends React.Component {
 }
 
 function text(key) {
-  return <div key={key} contentEditable suppressContentEditableWarning>This text is editable</div>;
+  return (
+    <div>
+      <button>up</button><button>down</button><button></button>
+      <div key={key} contentEditable suppressContentEditableWarning>This text is editable</div>
+    </div>
+  );
 }
 function headline(key) {
   return <h2 key={key} contentEditable suppressContentEditableWarning>This Headline is editable</h2>;

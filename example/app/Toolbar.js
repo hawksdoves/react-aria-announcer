@@ -1,7 +1,8 @@
 import React from 'react';
-import { connectAriaAnnouncementConsumer } from '../../src/connectAnnouncements';
+import { connectAriaAnnouncementConsumer, AnnounceMessageContext } from '../../src/connectAnnouncements';
 
-function Toolbar({ announce, addBlock }) {
+function Toolbar({ addBlock }) {
+  const announce = React.useContext(AnnounceMessageContext);
   const handleOnClick = (type, action) => {
     addBlock(type);
     announce('blockAction', type, action);
@@ -9,14 +10,17 @@ function Toolbar({ announce, addBlock }) {
 
   return (
     <div>
-      <button onClick={() => handleOnClick('text', 'added')}>
-              add text block
-      </button>
-      <button onClick={() => handleOnClick('headline', 'added')}>
-              add headline block
-      </button>
+      <h2>This Toolbar uses React Hooks</h2>
+      <div>
+        <button onClick={() => handleOnClick('text', 'added')}>
+                add text block
+        </button>
+        <button onClick={() => handleOnClick('headline', 'added')}>
+                add headline block
+        </button>
+      </div>
     </div>
   )
 }
 
-export default connectAriaAnnouncementConsumer(Toolbar);
+export default Toolbar;
