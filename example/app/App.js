@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HiddenMessages, connectAriaAnnouncementProvider } from '../../src/index';
+import { HiddenMessages } from '../../src/index';
 import ariaMessages from './aria-messages';
 import Editor from './Editor';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connectAriaAnnouncementConsumer, AnnounceMessageContext } from '../../src/connectAnnouncements';
+import { AnnounceMessageContext } from '../../src/connectAnnouncements';
 
 function Toolbar({ addBlock }) {
   const announce = React.useContext(AnnounceMessageContext);

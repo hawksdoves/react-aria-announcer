@@ -1,6 +1,7 @@
 import React from 'react';
 import { connectAriaAnnouncementProvider } from '../../src/connectAnnouncements';
 import Toolbar from './Toolbar';
+import Manager from './Manager';
 import Article from './Article';
 
 class Editor extends React.Component {
@@ -16,10 +17,10 @@ class Editor extends React.Component {
     let newBlock;
     switch(type) {
       case 'text':  
-        newBlock = text(article.length);
+        newBlock = <Manager>{text(article.length)}</Manager>;
       break;
       case 'headline': 
-        newBlock = headline(article.length);
+        newBlock = <Manager>{headline(article.length)}</Manager>;
       break;
     }
     this.setState({ article: [...article, newBlock]})
@@ -41,14 +42,13 @@ class Editor extends React.Component {
 
 function text(key) {
   return (
-    <div>
-      <button>up</button><button>down</button><button></button>
-      <div key={key} contentEditable suppressContentEditableWarning>This text is editable</div>
-    </div>
+    <div key={key} contentEditable suppressContentEditableWarning>This text is editable</div>
   );
 }
 function headline(key) {
-  return <h2 key={key} contentEditable suppressContentEditableWarning>This Headline is editable</h2>;
+  return (
+    <h2 key={key} contentEditable suppressContentEditableWarning>This Headline is editable</h2>
+  );
 }
 
 export default connectAriaAnnouncementProvider(Editor);

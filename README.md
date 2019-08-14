@@ -23,7 +23,7 @@ yarn add react-aria-announcer
 _________
 ------
 
-The library exports 3 components.
+The library exports 3 components and one react context.
 
 #### HiddenMessages
 ---
@@ -125,6 +125,12 @@ const ariaMessages = {
 
 ```
 
+## Connecting to the Announcer
+---
+There are 2 ways to connect to the announcer:
+* {*connectAriaAnnouncementConsumer*} this is a higher order component  
+* {*AnnounceMessageContext*} this is a react context object, allowing you to use react hooks
+
 ### connectAriaAnnouncementConsumer
 ---
 This higher order component receives your component that might handle important visual changes and actions etc.
@@ -165,7 +171,50 @@ function MyAccessibleAppSectionChild() {
 
 ```
 Your component will receive a prop `announce`.
-* `announce` - {function} - the first argument will be a key, as defined in your ariaMessages. Any additional arguments will correspond to the keys value and any parameters that you defined that function to take.
+* `announce` - {function} - the first argument will be a key, as defined in your ariaMessages. Any additional arguments will correspond to the keys value and any arguments that you defined that function to take.
+
+### AnnounceMessageContext
+---
+This context object allows you to take advantage of react hooks. It's behaviour is then exactly the same as connectAriaAnnouncementConsumer
+
+```javascript
+import React from 'react';
+import { HiddenMessages, AnnounceMessageContext } from 'react-aria-announcer';
+
+function FilterByBlockButton({ type }) {
+  const announce = React.useContext(AnnounceMessageContext);
+  function handleClick() {
+    fnFiltersDataBy(type)
+      .then((res) => {
+        announce('filter', type, res.length)
+      })
+    
+  }
+
+  return (
+    <button onClick={() => handleClick()}>
+      filter by {type}
+    </button>
+  )
+}
+
+const AccessibleFilterByBlock = connectAriaAnnouncementConsumer(FilterByBlockButton)
+
+function MyAccessibleAppSectionChild() {
+  return (
+    <div>
+      other components
+      <AccessibleFilterByBlock type='text' />
+      <AccessibleFilterByBlock type='headline' />
+      <AccessibleFilterByBlock type='image' />
+      even more components
+    </div>
+  )
+}
+
+```
+Your component will receive a prop `announce`.
+* `announce` - {function} - the first argument will be a key, as defined in your ariaMessages. Any additional arguments will correspond to the keys value and any arguments that you defined that function to take.
 
 # Contributing to react-aria-announcer
 
