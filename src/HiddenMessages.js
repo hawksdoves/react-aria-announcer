@@ -12,7 +12,7 @@ const hiddenStyling = {
 
 function MessageA({ message }) {
   return (
-    <div className="messageA" >
+    <div className="messageA AM-hidden">
       {message}
     </div>
   )
@@ -20,7 +20,7 @@ function MessageA({ message }) {
 
 function MessageB({ message }) {
   return (
-    <div className="messageB" >
+    <div className="messageB AM-hidden" >
       {message}
     </div>
   )
