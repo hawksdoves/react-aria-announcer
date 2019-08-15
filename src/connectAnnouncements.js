@@ -3,18 +3,18 @@ import React from 'react';
 const AnnounceMessageContext = React.createContext();
 
 const connectAriaAnnouncementProvider = (Section) => {
-  function ConnectedAriaLiveAnnouncements({ announce, ariaMessages, ...props }) {
+  const ConnectedAriaLiveAnnouncements = React.forwardRef(({ announce, ariaMessages, ...props }, ref) => {
     function triggerAnnouncement(action, ...args) {
       const message = ariaMessages[action](...args)
       return announce(message, Date.now())
     }
-
+  
     return (
       <AnnounceMessageContext.Provider value={triggerAnnouncement} > 
-        <Section {...props} />
+        <Section {...props} ref={ref} />
       </AnnounceMessageContext.Provider> 
     )
-  }
+  })
   return ConnectedAriaLiveAnnouncements;
 }
 
