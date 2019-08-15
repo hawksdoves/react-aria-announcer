@@ -1,22 +1,26 @@
 import React from 'react';
-import { connectAriaAnnouncementConsumer } from '../../src/connectAnnouncements';
+import { AnnounceMessageContext } from '../../src/connectAnnouncements';
 
-function Toolbar({ addNewMessageByAction, addBlock }) {
+function Toolbar({ addBlock }) {
+  const announce = React.useContext(AnnounceMessageContext);
   const handleOnClick = (type, action) => {
-    blockAction(type, action)
-    addBlock(type)
+    addBlock(type);
+    announce('blockAction', type, action);
   }
 
   return (
     <div>
-      <button onClick={() => handleOnClick('text', 'added')}>
-              add text block
-      </button>
-      <button onClick={() => handleOnClick('headline', 'added')}>
-              add headline block
-      </button>
+      <h2>This Toolbar uses React Hooks</h2>
+      <div>
+        <button onClick={() => handleOnClick('text', 'added')}>
+                add text block
+        </button>
+        <button onClick={() => handleOnClick('headline', 'added')}>
+                add headline block
+        </button>
+      </div>
     </div>
   )
 }
 
-const ConnectedMessageToolbar = connectActionConsumer(Toolbar);
+export default Toolbar;

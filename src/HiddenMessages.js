@@ -10,17 +10,17 @@ const hiddenStyling = {
   overflow: 'hidden',
 };
 
-function MessageA({ message, manner }) {
+function MessageA({ message, className }) {
   return (
-    <div aria-live={manner} style={hiddenStyling} className="messageA" >
+    <div className={`messageA AM-hidden ${className}`} >
       {message}
     </div>
   )
 }
 
-function MessageB({ message, manner }) {
+function MessageB({ message, className }) {
   return (
-    <div aria-live={manner} style={hiddenStyling} className="messageB" >
+    <div className={`messageB AM-hidden ${className}`} >
       {message}
     </div>
   )
@@ -41,13 +41,13 @@ export class HiddenMessages extends React.Component {
   }
   
   render() {
-    const { message, timeStamp, manner, className } = this.props;
+    const { message, manner, className } = this.props;
     return (
-      <div className={`AM-hidden ${className}`} > 
+      <div className={`AM-hidden ${className}`} aria-live={manner} style={hiddenStyling}> 
         { this.state.messageA ?
-          <MessageA message={message} manner={manner} />
+          <MessageA message={message} manner={manner} className={className} />
         :
-          <MessageB message={message} manner={manner} />
+          <MessageB message={message} manner={manner} className={className}/>
         } 
       </div>
     )
