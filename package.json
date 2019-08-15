@@ -4,7 +4,6 @@
   "description": "",
   "main": "build/src/index.js",
   "scripts": {
-    "build:bundle": "webpack --config webpack.config.js",
     "build": "babel ./src -d build/src",
     "start": "ENV=development webpack-dev-server --config webpack.example.config.js",
     "test:watch": "jest --watch",

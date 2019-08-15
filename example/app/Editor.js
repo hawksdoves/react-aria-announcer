@@ -17,10 +17,10 @@ class Editor extends React.Component {
     let newBlock;
     switch(type) {
       case 'text':  
-        newBlock = <Manager>{text(article.length)}</Manager>;
+        newBlock = <Manager type={type} >{text(article.length)}</Manager>;
       break;
       case 'headline': 
-        newBlock = <Manager>{headline(article.length)}</Manager>;
+        newBlock = <Manager type={type}>{headline(article.length)}</Manager>;
       break;
     }
     this.setState({ article: [...article, newBlock]})

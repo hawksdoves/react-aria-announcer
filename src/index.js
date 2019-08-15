@@ -1,2 +1,2 @@
-export { connectAriaAnnouncementProvider, connectAriaAnnouncementConsumer } from './connectAnnouncements';
+export { connectAriaAnnouncementProvider, connectAriaAnnouncementConsumer, AnnounceMessageContext } from './connectAnnouncements';
 export { HiddenMessages } from './HiddenMessages';

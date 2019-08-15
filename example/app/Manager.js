@@ -1,9 +1,9 @@
 import React from 'react';
 import { connectAriaAnnouncementConsumer } from '../../src/connectAnnouncements';
 
-function Manager({ moveBlock, type, announce, children }) {
+function Manager({ moveBlock = () => {}, type, announce, children }) {
   const handleOnClick = (type, action) => {
-    moveBlock(type);
+    moveBlock();
     announce('moveBlock', type, action);
   }
 
